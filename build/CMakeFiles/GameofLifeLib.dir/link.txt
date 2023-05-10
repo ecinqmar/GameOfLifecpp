@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGameofLifeLib.a CMakeFiles/GameofLifeLib.dir/cells.cpp.o
+/usr/bin/ranlib libGameofLifeLib.a

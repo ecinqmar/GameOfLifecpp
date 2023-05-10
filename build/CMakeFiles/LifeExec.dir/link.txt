@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/LifeExec.dir/main.cpp.o -o LifeExec  libGameofLifeLib.a 
