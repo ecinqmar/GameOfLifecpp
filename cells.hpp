@@ -31,14 +31,14 @@ class Cell
 
         }
 
-        bool checkActive( void );
+        bool isActive( void );
         void setActive( void );
         void setNew( bool newstate );
 
 };
 
 /**
- * @brief handle all operations around a cell and the cells next to it.
+ * @brief handle all operations of a cell.
  * 
  */
 class Membrane
@@ -48,15 +48,11 @@ class Membrane
         char    displayToken;
         uint8_t activePartners;
         Cell    thisCell;       //holds display char for the 
-        int     position, xCord, yCord;;
 
 
-        Membrane( int x, int y )
+        Membrane( )
         {
-            xCord = x;
-            yCord = y;
             activePartners = 0; 
-            position = 0;
         };
 
         ~Membrane( void )
@@ -64,16 +60,23 @@ class Membrane
 
         };
 
+        //perform the logic of a life cycle
+        void lifeLogic( void );
+
+        // affectuate the change of the life cycle
         void lifeCycle( void );
 
 };
 
-
+/*****************************************************
+ * @brief handle operations along the entire array
+ * 
+*****************************************************/
 class CellArray
 {
     public:
 
-        Cell Cells[Dimensions][Dimensions];
+        Membrane Cells[Dimensions][Dimensions];
 
         CellArray()
         {
@@ -85,6 +88,13 @@ class CellArray
         {
 
         }
+
+        /*****************************************************
+         * @brief Initial function. get user input for the inital amount of active cells, then seed them randomly.
+         * 
+         * @param initalActives  quantity of inital active cells
+        *****************************************************/
+        void Seed( int initalActives );
 
         /**
          * @brief Print the array in the console
@@ -100,6 +110,6 @@ class CellArray
 
     private:
 
-    int checkPartners( void );
+    int checkPartners( int x, int y );
     void generate( void );
 };

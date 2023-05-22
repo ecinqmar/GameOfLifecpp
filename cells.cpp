@@ -44,16 +44,29 @@ void CellArray::PrintArray()
 }
 
 /**
- * @brief process loop for checking the devices
+ * @brief perform a life cycle on the game.
  * 
  */
 void CellArray::Cycle()
 {
-    for (auto i = 0; i < Dimensions; i++)
+    for (auto y = 0; y < Dimensions; y++)
     {
-        for (auto i = 0; i < Dimensions; i++)
+        for (auto x = 0; x < Dimensions; x++)
         {
-            //
+            // determine the amount of active partners
+            Cells[x][y].activePartners = this->checkPartners( x , y );
+
+            //allow every state to perform the logic
+            Cells[x][y].lifeLogic();
+        }
+    }
+
+    //set the new state of all cells for display
+    for (auto y = 0; y < Dimensions; y++)
+    {
+        for (auto x = 0; x < Dimensions; x++)
+        {
+             Cells[x][y].lifeCycle();
         }
     }
 }
@@ -63,18 +76,93 @@ void CellArray::Cycle()
  * 
  * @return int number of active cells 
  */
-int CellArray::checkPartners()
+int CellArray::checkPartners( int x, int y )
 {
-
     //check if boundaries are available
+    int activeCount = 0;
+
+    if ( x == 0 && y == 0)
+    {
+        // x+1 y+1
+        if ( Cells[x+1][y].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+        if ( Cells[x][y+1].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+    }
+    else if ( x == Dimensions && y == Dimensions )
+    {
+        // x-1 y-1
+        if ( Cells[x-1][y].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+        if ( Cells[x][y-1].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+    }
+    else if( x == 0 )
+    {
+        // x+1 y-1 y+1
+        if ( Cells[x+1][y].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+        if ( Cells[x][y-1].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+        if ( Cells[x][y+1].thisCell.isActive() )
+        {
+            activeCount++;
+        }        
+    }
+    else if ( y == 0 )
+    {
+        // x+1 x-1 y+1 
+        if ( Cells[x+1][y].thisCell.isActive() )
+        {
+            activeCount++;
+        }  
+        if ( Cells[x-1][y].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+        if ( Cells[x][y+1].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+    }
+
+    //if completely out of bounds for some reason then return 0
     return 0;
+}
+
+/*****************************************************
+* @brief Initial function. get user input for the inital amount of active cells, then seed them randomly.
+* 
+* @param initalActives  quantity of inital active cells
+*****************************************************/
+void CellArray::Seed( int initalActives )
+{
+    int remaining = initalActives;
+    int Total = Dimensions*Dimensions;
+    float quotient = initalActives/Total;
+
+    //initial setup will 
+
+
 }
 
 /**
  * @brief determine if this cell is going to live or die this cycle.
  * 
  */
-void Membrane::lifeCycle()
+void Membrane::lifeLogic()
 {
     /* rules:
     Any live cell with fewer than two live neighbours dies, as if by underpopulation.
@@ -110,10 +198,19 @@ void Membrane::lifeCycle()
    }
 }
 
+/*****************************************************
+ * @brief affectuate the change of the life cycle for a specific cell
+ * 
+*****************************************************/
+void Membrane::lifeCycle()
+{
+    this->thisCell.setActive();
+}
+
 /**
  * @brief return the current state
  */
-bool Cell::checkActive()
+bool Cell::isActive()
 {
     return this->active;
 }

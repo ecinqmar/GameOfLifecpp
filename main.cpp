@@ -23,7 +23,15 @@ CellArray Cellarray;
 
 int main( )
 {
+    int ActiveNum = 0;
 
+    //get user input
+    cout << "Enter the amount of starting cells:";
+    cin >> ActiveNum;
+    // get inital condition
+    Cellarray.Seed( ActiveNum );
+
+    // go forever
     while(1)
     {
         //clear the current screen
