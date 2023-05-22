@@ -83,12 +83,12 @@ clean: CMakeFiles/LifeExec.dir/clean
 CMakeFiles/GameofLifeLib.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameofLifeLib.dir/build.make CMakeFiles/GameofLifeLib.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameofLifeLib.dir/build.make CMakeFiles/GameofLifeLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles --progress-num=1,2 "Built target GameofLifeLib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles --progress-num=1,2,3 "Built target GameofLifeLib"
 .PHONY : CMakeFiles/GameofLifeLib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/GameofLifeLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/GameofLifeLib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles 0
 .PHONY : CMakeFiles/GameofLifeLib.dir/rule
@@ -109,12 +109,12 @@ CMakeFiles/GameofLifeLib.dir/clean:
 CMakeFiles/LifeExec.dir/all: CMakeFiles/GameofLifeLib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LifeExec.dir/build.make CMakeFiles/LifeExec.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LifeExec.dir/build.make CMakeFiles/LifeExec.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles --progress-num=3,4 "Built target LifeExec"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles --progress-num=4,5 "Built target LifeExec"
 .PHONY : CMakeFiles/LifeExec.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/LifeExec.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/LifeExec.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles 0
 .PHONY : CMakeFiles/LifeExec.dir/rule

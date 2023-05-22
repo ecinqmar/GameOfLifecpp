@@ -6,6 +6,11 @@
 },
 {
   "directory": "/home/ethan/Documents/Repos/GameOfLife/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/GameofLifeLib.dir/utilities.cpp.o -c /home/ethan/Documents/Repos/GameOfLife/utilities.cpp",
+  "file": "/home/ethan/Documents/Repos/GameOfLife/utilities.cpp"
+},
+{
+  "directory": "/home/ethan/Documents/Repos/GameOfLife/build",
   "command": "/usr/bin/g++   -g -o CMakeFiles/LifeExec.dir/main.cpp.o -c /home/ethan/Documents/Repos/GameOfLife/main.cpp",
   "file": "/home/ethan/Documents/Repos/GameOfLife/main.cpp"
 }

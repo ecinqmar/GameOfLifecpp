@@ -21,12 +21,17 @@ using namespace std;
 static bool isInRange( int val, int low, int high );
 
 
+/*****************************************************
+ * Functions
+*****************************************************/
+
 /**
  * @brief print the array in console
  * 
  */
 void CellArray::PrintArray()
 {
+    // temp function
     for (auto i = 0; i < Dimensions; i++)
     {
         for (auto i = 0; i < Dimensions; i++)
@@ -39,7 +44,7 @@ void CellArray::PrintArray()
 }
 
 /**
- * @brief process loop for checking the 
+ * @brief process loop for checking the devices
  * 
  */
 void CellArray::Cycle()
@@ -48,7 +53,7 @@ void CellArray::Cycle()
     {
         for (auto i = 0; i < Dimensions; i++)
         {
-            
+            //
         }
     }
 }
@@ -58,7 +63,7 @@ void CellArray::Cycle()
  * 
  * @return int number of active cells 
  */
-int Membrane::checkPartners()
+int CellArray::checkPartners()
 {
 
     //check if boundaries are available
@@ -90,7 +95,7 @@ void Membrane::lifeCycle()
             thisCell.setNew(true);
         }
 
-        else if ( this->activePartners <= 2 )
+        else if ( this->activePartners < 2 )
         {
             thisCell.setNew(false);
         }

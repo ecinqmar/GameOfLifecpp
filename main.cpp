@@ -11,6 +11,7 @@
 
 #include "main.hpp"
 #include "cells.hpp"
+#include "utilities.hpp"
 #include <iostream>
 #include <string>
 #include <chrono>
@@ -20,17 +21,21 @@ using namespace std;
 
 CellArray Cellarray;
 
-void main( )
+int main( )
 {
 
     while(1)
     {
-        // need a delay function
+        //clear the current screen
+        Utilities::Clear();
 
-        cout << "q";
+        //perform all logic then print the results
+        Cellarray.Cycle();
+        Cellarray.PrintArray();
 
-        
-
-        this_thread::sleep_for(500ms);   
+        //delay for a second
+        this_thread::sleep_for(1s);   
     }
+
+    return 0;
 }

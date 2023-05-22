@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/GameofLifeLib.dir/cells.cpp.o"
   "CMakeFiles/GameofLifeLib.dir/cells.cpp.o.d"
+  "CMakeFiles/GameofLifeLib.dir/utilities.cpp.o"
+  "CMakeFiles/GameofLifeLib.dir/utilities.cpp.o.d"
   "libGameofLifeLib.a"
   "libGameofLifeLib.pdb"
 )

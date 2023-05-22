@@ -83,17 +83,33 @@ CMakeFiles/GameofLifeLib.dir/cells.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GameofLifeLib.dir/cells.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ethan/Documents/Repos/GameOfLife/cells.cpp -o CMakeFiles/GameofLifeLib.dir/cells.cpp.s
 
+CMakeFiles/GameofLifeLib.dir/utilities.cpp.o: CMakeFiles/GameofLifeLib.dir/flags.make
+CMakeFiles/GameofLifeLib.dir/utilities.cpp.o: ../utilities.cpp
+CMakeFiles/GameofLifeLib.dir/utilities.cpp.o: CMakeFiles/GameofLifeLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GameofLifeLib.dir/utilities.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameofLifeLib.dir/utilities.cpp.o -MF CMakeFiles/GameofLifeLib.dir/utilities.cpp.o.d -o CMakeFiles/GameofLifeLib.dir/utilities.cpp.o -c /home/ethan/Documents/Repos/GameOfLife/utilities.cpp
+
+CMakeFiles/GameofLifeLib.dir/utilities.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GameofLifeLib.dir/utilities.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ethan/Documents/Repos/GameOfLife/utilities.cpp > CMakeFiles/GameofLifeLib.dir/utilities.cpp.i
+
+CMakeFiles/GameofLifeLib.dir/utilities.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GameofLifeLib.dir/utilities.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ethan/Documents/Repos/GameOfLife/utilities.cpp -o CMakeFiles/GameofLifeLib.dir/utilities.cpp.s
+
 # Object files for target GameofLifeLib
 GameofLifeLib_OBJECTS = \
-"CMakeFiles/GameofLifeLib.dir/cells.cpp.o"
+"CMakeFiles/GameofLifeLib.dir/cells.cpp.o" \
+"CMakeFiles/GameofLifeLib.dir/utilities.cpp.o"
 
 # External object files for target GameofLifeLib
 GameofLifeLib_EXTERNAL_OBJECTS =
 
 libGameofLifeLib.a: CMakeFiles/GameofLifeLib.dir/cells.cpp.o
+libGameofLifeLib.a: CMakeFiles/GameofLifeLib.dir/utilities.cpp.o
 libGameofLifeLib.a: CMakeFiles/GameofLifeLib.dir/build.make
 libGameofLifeLib.a: CMakeFiles/GameofLifeLib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libGameofLifeLib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ethan/Documents/Repos/GameOfLife/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libGameofLifeLib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/GameofLifeLib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GameofLifeLib.dir/link.txt --verbose=$(VERBOSE)
 

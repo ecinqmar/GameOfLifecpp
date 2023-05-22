@@ -11,7 +11,7 @@ project(
 )
 
 
-add_library( GameofLifeLib cells.cpp cells.hpp )
+add_library( GameofLifeLib cells.cpp cells.hpp utilities.cpp utilities.hpp)
 
 add_executable( LifeExec main.cpp )
 
