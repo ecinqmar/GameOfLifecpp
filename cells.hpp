@@ -112,7 +112,7 @@ class CellArray
          * @brief 
          * 
         *****************************************************/
-        void CellArray::InitialCycle();
+        void InitialCycle();
 
 
     private:

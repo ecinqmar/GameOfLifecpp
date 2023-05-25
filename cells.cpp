@@ -57,7 +57,8 @@ void CellArray::PrintArray()
 
 /**
  * @brief perform a life cycle on the game.
- * 
+ *  determines the amount of partners, then determines the next lifecycle
+ *  finally, performs the transition to the next cycle.
  */
 void CellArray::Cycle()
 {
@@ -67,7 +68,13 @@ void CellArray::Cycle()
         {
             // determine the amount of active partners
             Cells[x][y].activePartners = this->checkPartners( x , y );
+        }
+    }
 
+    for (auto y = 0; y < Dimensions; y++)
+    {
+        for (auto x = 0; x < Dimensions; x++)
+        {
             //allow every state to perform the logic
             Cells[x][y].lifeLogic();
         }
@@ -83,6 +90,10 @@ void CellArray::Cycle()
     }
 }
 
+/*****************************************************
+ * @brief perform the initial lifecycle.
+ * 
+*****************************************************/
 void CellArray::InitialCycle()
 {
     //set the new state of all cells for display
@@ -117,7 +128,7 @@ int CellArray::checkPartners( int x, int y )
             activeCount++;
         }
     }
-    else if ( x == Dimensions && y == Dimensions )
+    else if ( x == (Dimensions - 1 ) && y == (Dimensions - 1 ) )
     {
         // x-1 y-1
         if ( Cells[x-1][y].thisCell.isActive() )
@@ -161,9 +172,60 @@ int CellArray::checkPartners( int x, int y )
             activeCount++;
         }
     }
+    else if ( x == (Dimensions - 1 ) )
+    {
+        // x+1 x-1 y11 
+        if ( Cells[x-1][y].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+        if ( Cells[x][y-1].thisCell.isActive() )
+        {
+            activeCount++;
+        }  
+        if ( Cells[x][y+1].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+    }
+    else if ( y == (Dimensions - 1 ) )
+    {
+        // x+1 x-1 y+1 
+        if ( Cells[x+1][y].thisCell.isActive() )
+        {
+            activeCount++;
+        }  
+        if ( Cells[x-1][y].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+        if ( Cells[x][y-1].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+    }
+    else
+    {
+        if ( Cells[x+1][y].thisCell.isActive() )
+        {
+            activeCount++;
+        }  
+        if ( Cells[x-1][y].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+        if ( Cells[x][y-1].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+        if ( Cells[x][y+1].thisCell.isActive() )
+        {
+            activeCount++;
+        }
+    }
 
-    //if completely out of bounds for some reason then return 0
-    return 0;
+    //if completely out of bounds for some reason it will return 0
+    return activeCount;
 }
 
 /*****************************************************
@@ -263,6 +325,9 @@ bool Cell::isActive()
 void Cell::setActive( void )
 {
     this->active = this->newstate;
+
+    //clear newstate
+    this->newstate = false;
 }
 
 /**
