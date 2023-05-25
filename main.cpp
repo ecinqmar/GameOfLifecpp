@@ -31,15 +31,23 @@ int main( )
     // get inital condition
     Cellarray.Seed( ActiveNum );
 
+    Cellarray.PrintArray();
+    
+    cout << "\n" << "\n";
+
+    Cellarray.Cycle();    
+    Cellarray.PrintArray();
+
     // go forever
     while(1)
     {
         //clear the current screen
-        Utilities::Clear();
+        //Clear();
 
         //perform all logic then print the results
-        Cellarray.Cycle();
-        Cellarray.PrintArray();
+        
+        //Cellarray.Cycle();
+        //Cellarray.PrintArray();
 
         //delay for a second
         this_thread::sleep_for(1s);   

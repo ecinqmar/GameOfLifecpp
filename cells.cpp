@@ -12,12 +12,17 @@
 #include "cells.hpp" 
 #include <stdint.h>
 #include <iostream>
+#include <stdlib.h>
+#include <vector>
+#include <ctime>
+#include <algorithm>
+#include <random>
 
 using namespace std;
 
-/**\
- * prototypes
-*/
+/*****************************************************
+ * PROTOTYPES 
+*****************************************************/
 static bool isInRange( int val, int low, int high );
 
 
@@ -32,11 +37,18 @@ static bool isInRange( int val, int low, int high );
 void CellArray::PrintArray()
 {
     // temp function
-    for (auto i = 0; i < Dimensions; i++)
+    for (auto x = 0; x < Dimensions; x++)
     {
-        for (auto i = 0; i < Dimensions; i++)
+        for (auto y = 0; y < Dimensions; y++)
         {
-            cout << "x"; 
+            if ( Cells[x][y].thisCell.isActive() )
+            {
+                cout << "x";
+            }
+            else
+            {
+                cout << "-";
+            }
         }
         cout << "\n";
     }
@@ -61,6 +73,18 @@ void CellArray::Cycle()
         }
     }
 
+    //set the new state of all cells for display
+    for (auto y = 0; y < Dimensions; y++)
+    {
+        for (auto x = 0; x < Dimensions; x++)
+        {
+             Cells[x][y].lifeCycle();
+        }
+    }
+}
+
+void CellArray::InitialCycle()
+{
     //set the new state of all cells for display
     for (auto y = 0; y < Dimensions; y++)
     {
@@ -145,17 +169,33 @@ int CellArray::checkPartners( int x, int y )
 /*****************************************************
 * @brief Initial function. get user input for the inital amount of active cells, then seed them randomly.
 * 
-* @param initalActives  quantity of inital active cells
+* @param actives  quantity of inital active cells
 *****************************************************/
-void CellArray::Seed( int initalActives )
+void CellArray::Seed( int actives )
 {
-    int remaining = initalActives;
-    int Total = Dimensions*Dimensions;
-    float quotient = initalActives/Total;
+    int totalSize = Dimensions*Dimensions;
+    std::vector<int> binary_array(totalSize, 0); // Create an array of zeros of specified size
 
-    //initial setup will 
+    // fill the array with _actives_ amount of ones
+    for ( auto i = 0; i <= actives ; i++)
+    {
+        binary_array[i] = 1;
+    }
 
+    auto rng = std::default_random_engine {};
 
+    std::srand(std::time(nullptr)); // Seed the random number generator
+    std::shuffle( std::begin(binary_array), std::end(binary_array), rng );
+
+    auto iterator = 0;
+    for (auto y = 0; y < Dimensions; y++)
+    {
+        for (auto x = 0; x < Dimensions; x++)
+        {
+            Cells[x][y].thisCell.setNew(binary_array[iterator]);
+            iterator++;
+        }
+    }
 }
 
 /**
@@ -228,11 +268,11 @@ void Cell::setActive( void )
 /**
  * @brief set the incoming state.
  * 
- * @param newstate incoming state
+ * @param incomingstate incoming state
  */
-void Cell::setNew( bool newstate )
+void Cell::setNew( bool incomingstate )
 {
-    this->newstate = newstate;
+    this->newstate = incomingstate;
 }
 
 /**

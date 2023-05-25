@@ -33,7 +33,7 @@ class Cell
 
         bool isActive( void );
         void setActive( void );
-        void setNew( bool newstate );
+        void setNew( bool incomingstate );
 
 };
 
@@ -107,6 +107,13 @@ class CellArray
          * 
          */
         void Cycle( void );
+
+        /*****************************************************
+         * @brief 
+         * 
+        *****************************************************/
+        void CellArray::InitialCycle();
+
 
     private:
 
